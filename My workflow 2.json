@@ -1,0 +1,75 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cb97ad10-fc18-4515-b5cc-aaa542913a0c",
+      "name": "Email Trigger (IMAP)",
+      "credentials": {
+        "imap": {
+          "id": "0Ag1U3gysiU9BjwV",
+          "name": "IMAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.from }}",
+        "subject": "=Mail {{ $json.subject }}",
+        "message": "<p>Hello,</p>  <p>Your email has been received successfully.</p>  <p>Thank you for contacting us. We have received your message and will get back to you shortly.</p>  <p>Regards,<br> Vikas Sahu</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "b15d5026-f61a-4a89-ac23-00df9dadb92a",
+      "name": "Send a message",
+      "webhookId": "9c9c10ab-b6be-4c64-b4f5-ecef20b36772",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "IX9TyL62Evau3MMR",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "301e97c4-8064-4882-b203-dc697ad35f19",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1cda9e4d6095a254f687ee0f77441f37c7d049dfc04f335456a6d6e23e563ab8"
+  },
+  "nodeGroups": [],
+  "id": "NYICw3BGJ1g5rL7I",
+  "tags": []
+}
